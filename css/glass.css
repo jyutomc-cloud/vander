@@ -1,0 +1,45 @@
+/* Vander — kaca Tier-2: blur + tint grafit + highlight dalam */
+.glass{
+  position:relative;
+  background:color-mix(in srgb, var(--graphite) 34%, transparent);
+  -webkit-backdrop-filter:blur(28px) saturate(170%);
+  backdrop-filter:blur(28px) saturate(170%);
+  border:1px solid rgba(243,239,230,.09);
+  box-shadow:inset 0 1px 0 rgba(243,239,230,.10), inset 0 -1px 0 rgba(0,0,0,.28), var(--shadow-1);
+}
+.glass-deep{
+  background:color-mix(in srgb, var(--graphite) 46%, transparent);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
+  backdrop-filter:blur(40px) saturate(180%);
+  border:1px solid rgba(243,239,230,.10);
+  box-shadow:inset 0 1px 0 rgba(243,239,230,.12), var(--shadow-2);
+}
+
+/* "lensa" kaca yang meluncur di belakang tab aktif */
+.tabbar{position:relative;isolation:isolate}
+.tab-lens{
+  position:absolute;top:6px;bottom:6px;left:0;width:0;z-index:0;
+  border-radius:var(--r-pill);
+  background:linear-gradient(180deg, rgba(230,201,138,.20), rgba(230,201,138,.10));
+  border:1px solid rgba(230,201,138,.30);
+  box-shadow:inset 0 1px 0 rgba(243,239,230,.18), 0 6px 18px rgba(230,201,138,.10);
+  transition:transform .5s var(--ease-spring), width .5s var(--ease-spring), scale .28s var(--ease-out);
+  transform-origin:center;
+}
+.tab-lens.moving{scale:1.14 .96}
+.tabbar a{position:relative;z-index:1}
+
+/* kilau bergerak halus di atas permukaan kaca besar */
+.sheen{overflow:hidden}
+.sheen::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(243,239,230,.07) 45%,transparent 60%);
+  background-size:250% 100%;background-position:120% 0;
+  animation:sheen 7s ease-in-out infinite;
+}
+@keyframes sheen{0%,55%{background-position:120% 0}85%,100%{background-position:-40% 0}}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass{background:rgba(21,24,34,.94)}
+  .glass-deep{background:rgba(21,24,34,.97)}
+}
