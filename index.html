@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#e9e9e7" />
+  <meta name="description" content="Vander adalah pengunduh media sosial dengan UI Liquid Glass yang elegan." />
+  <title>Vander · Social Media Downloader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/gh/naughtyduk/liquidGL@main/scripts/liquidGL.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="page-grain" aria-hidden="true"></div>
+  <div class="mesh mesh-a" aria-hidden="true"></div>
+  <div class="mesh mesh-b" aria-hidden="true"></div>
+
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Vander home">
+        <span class="brand-mark">V</span>
+        <span>VANDER</span>
+      </a>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        MEDIA DOWNLOADER
+      </div>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">01 / SOCIAL MEDIA</p>
+      <h1>Download media.<br><span>Keep the moment.</span></h1>
+      <p class="lede">Simpan video, foto, audio, dan media publik dari platform yang kamu gunakan sehari-hari.</p>
+
+      <section class="download-panel liquidGL" aria-label="Media downloader">
+        <div class="panel-shine" aria-hidden="true"></div>
+        <div class="panel-content">
+          <div class="input-head">
+            <div>
+              <span class="micro-label">SOURCE URL</span>
+              <span id="platformLabel" class="detected">Paste a link to begin</span>
+            </div>
+            <button id="clearBtn" class="icon-btn" type="button" aria-label="Clear URL" hidden>×</button>
+          </div>
+
+          <div class="url-row">
+            <input id="urlInput" type="url" inputmode="url" autocomplete="url"
+              placeholder="https://www.tiktok.com/..." aria-label="Social media URL" />
+            <button id="downloadBtn" class="download-btn" type="button">
+              <span>Resolve media</span>
+              <span class="arrow">↗</span>
+            </button>
+          </div>
+
+          <div class="platforms" aria-label="Supported platforms">
+            <span>TikTok</span><i></i><span>Instagram</span><i></i><span>YouTube</span><i></i><span>Pinterest</span><i></i><span>X</span><i></i><span>Facebook</span>
+          </div>
+
+          <div id="errorBox" class="message error" role="alert" hidden></div>
+          <div id="loadingBox" class="message loading" hidden>
+            <span class="loader"></span>
+            <span id="loadingText">Resolving media…</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="resultSection" class="result-section" hidden>
+        <div class="result-heading">
+          <div>
+            <p class="eyebrow">02 / RESULT</p>
+            <h2 id="resultTitle">Media found</h2>
+          </div>
+          <span id="resultType" class="result-badge">VIDEO</span>
+        </div>
+
+        <div class="result-card liquidGL">
+          <div class="panel-content result-grid">
+            <div class="thumb-wrap">
+              <img id="thumb" alt="" hidden />
+              <div id="thumbPlaceholder" class="thumb-placeholder">VANDER</div>
+            </div>
+            <div class="result-meta">
+              <p id="resultAuthor" class="author"></p>
+              <p id="resultDescription" class="description">Choose a downloadable format below.</p>
+              <div id="downloadList" class="download-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <span>VANDER / 2026</span>
+      <span>PUBLIC MEDIA LINKS ONLY</span>
+    </footer>
+  </main>
+</body>
+</html>
